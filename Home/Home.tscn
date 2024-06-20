@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd0r3bgqnuvy3"]
+
+[ext_resource type="FontFile" uid="uid://1dmjehnqcria" path="res://Assets/fonts/Teko-Medium.ttf" id="1_l2txo"]
+[ext_resource type="Script" path="res://Home/Home.gd" id="1_uhlou"]
+[ext_resource type="StyleBox" uid="uid://b3y2wrvt0kudi" path="res://Home/button_style.tres" id="2_5nh7m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xrjl"]
+bg_color = Color(0.494005, 0.144716, 0.397414, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 24.0
+expand_margin_top = 12.0
+expand_margin_right = 24.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otb0s"]
+bg_color = Color(0.291712, 0.068698, 0.230409, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 24.0
+expand_margin_top = 12.0
+expand_margin_right = 24.0
+expand_margin_bottom = 8.0
+
+[node name="Home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uhlou")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00392157, 0.0117647, 0.0392157, 1)
+metadata/_edit_lock_ = true
+
+[node name="StartGame" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -23.5
+offset_right = 59.5
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.965247, 0.834401, 0.914477, 1)
+theme_override_colors/font_pressed_color = Color(0.815574, 0.348133, 0.672917, 1)
+theme_override_colors/font_hover_color = Color(0.937304, 0.70035, 0.849233, 1)
+theme_override_fonts/font = ExtResource("1_l2txo")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_5nh7m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4xrjl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_otb0s")
+theme_override_styles/focus = ExtResource("2_5nh7m")
+text = "Start Game "
+
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]

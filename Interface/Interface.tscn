@@ -1,0 +1,124 @@
+[gd_scene load_steps=6 format=3 uid="uid://bphl1vhq30stl"]
+
+[ext_resource type="FontFile" uid="uid://1dmjehnqcria" path="res://Assets/fonts/Teko-Medium.ttf" id="1_7axjl"]
+[ext_resource type="Script" path="res://Interface/Interface.gd" id="1_asje5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2l65i"]
+content_margin_left = 0.0
+content_margin_top = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qnsq4"]
+content_margin_left = 400.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dskqu"]
+content_margin_right = 400.0
+
+[node name="Interface" type="Control" groups=["interface"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_asje5")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00392157, 0.0117647, 0.0392157, 1)
+metadata/_edit_lock_ = true
+
+[node name="Score" type="Node" parent="."]
+
+[node name="BG" type="ColorRect" parent="Score"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+color = Color(0.596078, 0.188235, 0.482353, 1)
+
+[node name="Timer" type="Node" parent="Score"]
+
+[node name="Timer_BG" type="ColorRect" parent="Score/Timer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.5
+offset_right = 138.5
+offset_bottom = 70.0
+grow_horizontal = 2
+color = Color(0.00392157, 0.0117647, 0.0392157, 1)
+
+[node name="Time" type="Label" parent="Score/Timer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.403692, 0.256907, 0.409682, 1)
+theme_override_fonts/font = ExtResource("1_7axjl")
+theme_override_font_sizes/font_size = 24
+text = "TIME"
+horizontal_alignment = 1
+
+[node name="TimeLeft" type="Label" parent="Score/Timer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.876067, 0.782571, 0.884106, 1)
+theme_override_fonts/font = ExtResource("1_7axjl")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2l65i")
+text = "0:00"
+horizontal_alignment = 1
+
+[node name="Separator_Horizontal" type="ColorRect" parent="Score"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 67.0
+offset_bottom = 70.0
+grow_horizontal = 2
+color = Color(0.230099, 0.137733, 0.234937, 1)
+
+[node name="PlayerScore" type="Label" parent="Score"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.00392157, 0.0117647, 0.0392157, 1)
+theme_override_fonts/font = ExtResource("1_7axjl")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qnsq4")
+text = "0"
+
+[node name="EnemyScore" type="Label" parent="Score"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.00392157, 0.0117647, 0.0392157, 1)
+theme_override_fonts/font = ExtResource("1_7axjl")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dskqu")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Separator_Vertical" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.230099, 0.137733, 0.234937, 1)

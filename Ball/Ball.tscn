@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://8f1hvhlp05ty"]
+
+[ext_resource type="Script" path="res://Ball/Ball.gd" id="1_p0r3f"]
+[ext_resource type="Texture2D" uid="uid://eov3dnxn5w1x" path="res://Assets/arts/Ball.png" id="1_qeeji"]
+[ext_resource type="Texture2D" uid="uid://cracbqwhj361t" path="res://Assets/arts/BallMotion.png" id="2_pwx48"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nhfxp"]
+radius = 15.0333
+
+[node name="Ball" type="CharacterBody2D"]
+script = ExtResource("1_p0r3f")
+
+[node name="Tail" type="Sprite2D" parent="."]
+position = Vector2(0.0178537, 0.024488)
+rotation = -0.785398
+texture = ExtResource("2_pwx48")
+offset = Vector2(-15.5517, 15.5264)
+
+[node name="Circle" type="Sprite2D" parent="."]
+texture = ExtResource("1_qeeji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nhfxp")

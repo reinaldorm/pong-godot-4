@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://b52qgcb5gc7pd"]
+
+[ext_resource type="PackedScene" uid="uid://bphl1vhq30stl" path="res://Interface/Interface.tscn" id="1_36mng"]
+[ext_resource type="Script" path="res://Level/Level.gd" id="1_oe0fx"]
+[ext_resource type="PackedScene" uid="uid://dqhcjnf2yp2vf" path="res://Player/Player.tscn" id="1_tagj8"]
+[ext_resource type="PackedScene" uid="uid://qpx4i26xl6x7" path="res://Enemy/Enemy.tscn" id="2_mw8kw"]
+[ext_resource type="PackedScene" uid="uid://8f1hvhlp05ty" path="res://Ball/Ball.tscn" id="4_p5ndk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yhnc"]
+size = Vector2(1280, 14.1875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21lne"]
+size = Vector2(20, 648)
+
+[node name="Level" type="Node"]
+script = ExtResource("1_oe0fx")
+
+[node name="Interface" parent="." instance=ExtResource("1_36mng")]
+
+[node name="Countdown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+
+[node name="Ceil" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(640, 63.0938)
+shape = SubResource("RectangleShape2D_3yhnc")
+debug_color = Color(1, 0.56719, 0.471647, 0.42)
+
+[node name="Floor" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(640, 727.188)
+shape = SubResource("RectangleShape2D_3yhnc")
+debug_color = Color(1, 0.56719, 0.471647, 0.42)
+
+[node name="LeftGoal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftGoal"]
+position = Vector2(-10, 395)
+shape = SubResource("RectangleShape2D_21lne")
+debug_color = Color(1.73271e-06, 0.639445, 0.364558, 0.42)
+
+[node name="RightGoal" type="Area2D" parent="."]
+position = Vector2(1300, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightGoal"]
+position = Vector2(-10, 395)
+shape = SubResource("RectangleShape2D_21lne")
+debug_color = Color(1.73271e-06, 0.639445, 0.364558, 0.42)
+
+[node name="Enemy" parent="." groups=["players"] instance=ExtResource("2_mw8kw")]
+position = Vector2(1220, 360)
+
+[node name="Player" parent="." groups=["players"] instance=ExtResource("1_tagj8")]
+position = Vector2(60, 360)
+
+[node name="Ball" parent="." instance=ExtResource("4_p5ndk")]
+position = Vector2(640, 360)
+
+[connection signal="timeout" from="Countdown" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="LeftGoal" to="." method="_on_left_goal_body_entered"]
+[connection signal="body_entered" from="RightGoal" to="." method="_on_right_goal_body_entered"]
